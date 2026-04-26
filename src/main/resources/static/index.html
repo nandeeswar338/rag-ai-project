@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>RAG AI System</title>
+</head>
+<body>
+
+<h2>Ask Your Document</h2>
+
+<input type="text" id="question" placeholder="Enter your question" size="50">
+<button onclick="ask()">Ask</button>
+
+<p><strong>Answer:</strong></p>
+<p id="result"></p>
+
+<script>
+function ask() {
+    let q = document.getElementById("question").value;
+
+    fetch("http://localhost:8080/ask?question=" + q)
+        .then(res => res.text())
+        .then(data => {
+            document.getElementById("result").innerText = data;
+        });
+}
+</script>
+
+</body>
+</html>
